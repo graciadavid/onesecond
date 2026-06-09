@@ -99,7 +99,7 @@ export const brands = [
   { slug: "wine", name: "Wine", color: "#ffffff", bgColor: "#880E4F", perSecond: 8300, unit: "glasses of wine drunk", absurdUnit: "bottles of wine opened", absurdDivisor: 5, source: "OIV 2023", category: "food", subcategory: "" },
 
   // SPORTS
-  { slug: "running", name: "Running", color: "#ffffff", bgColor: "#2E7D32", perSecond: 120000, unit: "people running", absurdUnit: "marathons being run simultaneously", absurdDivisor: 500, source: "RunRepeat 2023", category: "sports", subcategory: "" },
+  { slug: "running", name: "Running", color: "#ffffff", bgColor: "#2E7D32", perSecond: 120000, unit: "km run worldwide", absurdUnit: "trips around the Earth by runners", absurdDivisor: 40075, source: "RunRepeat 2023", category: "sports", subcategory: "" },
   { slug: "gym-visits", name: "Gym Visits", color: "#ffffff", bgColor: "#1565C0", perSecond: 3400, unit: "people at the gym", absurdUnit: "gyms packed to the roof", absurdDivisor: 200, source: "IHRSA 2023", category: "sports", subcategory: "" },
   { slug: "footballs-sold", name: "Footballs Sold", color: "#ffffff", bgColor: "#1B5E20", perSecond: 8, unit: "footballs sold", absurdUnit: "footballs sold worldwide", absurdDivisor: 1, source: "FIFA Industry Report 2023", category: "sports", subcategory: "" },
   { slug: "swimming", name: "Swimming", color: "#ffffff", bgColor: "#006064", perSecond: 85000, unit: "people swimming", absurdUnit: "Olympic pools occupied simultaneously", absurdDivisor: 2000, source: "FINA 2023", category: "sports", subcategory: "" },
