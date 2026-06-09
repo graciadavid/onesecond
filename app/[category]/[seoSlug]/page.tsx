@@ -77,7 +77,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
    setSwiping(true)
    setTimeout(() => {
      if (diff > 0 && nextBrand) router.push(`/${nextBrand.category}/${nextBrand.seoSlug}`)
-     if (diff < 0 && prevBrand) router.push(`/${prevBrand.category}/${prevBrand.seoSlug}`)
+     
      setSwiping(false)
    }, 300)
  }
