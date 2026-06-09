@@ -86,10 +86,10 @@ export default function BrandPage({ params }: { params: Promise<{ slug: string }
 
   return (
     <main
-      className="min-h-screen flex flex-col transition-opacity duration-150"
+      className="min-h-screen flex flex-col transition-opacity duration-300"
       style={{
         background: `linear-gradient(160deg, ${brand.bgColor}dd 0%, ${brand.bgColor} 100%)`,
-        opacity: swiping ? 0 : 1,
+        opacity: swiping ? 0.3 : 1,
         color: tc
       }}
       onTouchStart={handleTouchStart}
