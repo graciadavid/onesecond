@@ -65,7 +65,7 @@ export default function Home() {
 
      <header className="px-5 md:px-10 py-6 md:py-8 flex flex-col gap-4">
        <div className="flex items-center justify-between gap-4">
-         <p className="text-gray-800 text-xs md:text-sm font-light tracking-widest uppercase shrink-0">Wiki<b>Seconds</b></p>
+         <p className="text-gray-800 text-lg md:text-2xl font-light tracking-widest uppercase shrink-0">Wiki<span className="font-bold">Seconds</span></p>
          <input
            type="text"
            placeholder="Search..."
