@@ -110,7 +110,7 @@ export const brands = [
  { slug: "sports-betting", seoSlug: "how-much-money-bet-on-sports-per-second", name: "Sports Betting", color: "#ffffff", bgColor: "#1A237E", perSecond: 45000, unit: "dollars bet on sports", absurdUnit: "bets placed worldwide", absurdDivisor: 10, source: "Statista 2023", category: "sports", subcategory: "" },
 
  { slug: "cars-driving", seoSlug: "how-many-cars-driving-right-now", name: "Cars Driving", color: "#ffffff", bgColor: "#263238", perSecond: 50000, unit: "cars on the road", absurdUnit: "Formula 1 circuits covered by cars", absurdDivisor: 5000, source: "IEA Transport Report 2023", category: "life", subcategory: "" },
-  { slug: "people-flying", seoSlug: "how-many-people-flying-right-now", name: "People Flying", color: "#ffffff", bgColor: "#1565C0", perSecond: 1200, unit: "people in the air", absurdUnit: "planes taking off right now worldwide", absurdDivisor: 3, source: "IATA 2023", category: "life", subcategory: "" },
+  { slug: "people-flying", seoSlug: "how-many-planes-taking-off-per-second", name: "Taking Off", color: "#ffffff", bgColor: "#1565C0", perSecond: 1.15, unit: "planes taking off", absurdUnit: "planes in the air since you arrived", absurdDivisor: 1, source: "IATA 2023", category: "life", subcategory: "" },
   { slug: "metro-riders", seoSlug: "how-many-people-on-the-metro-right-now", name: "Metro Riders", color: "#ffffff", bgColor: "#AD1457", perSecond: 8000, unit: "people on the metro", absurdUnit: "metro wagons full of passengers", absurdDivisor: 200, source: "UITP 2023", category: "life", subcategory: "" },
 
   // PEOPLE - BILLIONAIRES
