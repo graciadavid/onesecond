@@ -129,7 +129,8 @@ export const brands = [
   { slug: "kylian-mbappe", name: "Kylian Mbappé", color: "#ffffff", bgColor: "#003189", perSecond: 9, unit: "dollars earned", absurdUnit: "football shirts sold worldwide", absurdDivisor: 80, source: "Forbes Athletes 2023", category: "people", subcategory: "athletes" },
   { slug: "neymar", name: "Neymar", color: "#ffffff", bgColor: "#FFD700", perSecond: 8, unit: "dollars earned", absurdUnit: "goals scored in his career per dollar", absurdDivisor: 1000, source: "Forbes Athletes 2023", category: "people", subcategory: "athletes" },
   { slug: "max-verstappen", name: "Max Verstappen", color: "#ffffff", bgColor: "#1E3A5F", perSecond: 6, unit: "dollars earned", absurdUnit: "laps around Monaco earned", absurdDivisor: 100, source: "Forbes Athletes 2023", category: "people", subcategory: "athletes" },
-  { slug: "roger-federer", name: "Roger Federer", color: "#ffffff", bgColor: "#C0392B", perSecond: 5, unit: "dollars earned", absurdUnit: "tennis balls used in his career", absurdDivisor: 3, source: "Forbes Athletes 2023", category: "people", subcategory: "athletes" },
+  { slug: "carlos-alcaraz", name: "Carlos Alcaraz", color: "#ffffff", bgColor: "#C8102E", perSecond: 3, unit: "dollars earned", absurdUnit: "tennis balls hit in his career", absurdDivisor: 1, source: "Forbes Athletes 2024", category: "people", subcategory: "athletes" },
+  { slug: "jannik-sinner", name: "Jannik Sinner", color: "#ffffff", bgColor: "#009246", perSecond: 3, unit: "dollars earned", absurdUnit: "aces served in his career", absurdDivisor: 1, source: "Forbes Athletes 2024", category: "people", subcategory: "athletes" },
   { slug: "tiger-woods", name: "Tiger Woods", color: "#ffffff", bgColor: "#1B5E20", perSecond: 4, unit: "dollars earned", absurdUnit: "golf balls hit in his career", absurdDivisor: 1, source: "Forbes Athletes 2023", category: "people", subcategory: "athletes" },
 
   // PEOPLE - ENTERTAINERS
@@ -141,6 +142,11 @@ export const brands = [
   { slug: "kim-kardashian", name: "Kim Kardashian", color: "#ffffff", bgColor: "#C0A882", perSecond: 4, unit: "dollars earned", absurdUnit: "SKIMS products sold", absurdDivisor: 50, source: "Forbes Entertainers 2023", category: "people", subcategory: "entertainers" },
   { slug: "dwayne-johnson", name: "Dwayne Johnson", color: "#ffffff", bgColor: "#8B4513", perSecond: 3, unit: "dollars earned", absurdUnit: "movie tickets sold starring The Rock", absurdDivisor: 15, source: "Forbes Entertainers 2023", category: "people", subcategory: "entertainers" },
   { slug: "kylie-jenner", name: "Kylie Jenner", color: "#ffffff", bgColor: "#E91E8C", perSecond: 3, unit: "dollars earned", absurdUnit: "Kylie Cosmetics lip kits sold", absurdDivisor: 29, source: "Forbes Entertainers 2023", category: "people", subcategory: "entertainers" },
+  { slug: "bad-bunny", name: "Bad Bunny", color: "#ffffff", bgColor: "#FFD700", perSecond: 4, unit: "dollars earned", absurdUnit: "Spotify streams since you arrived", absurdDivisor: 1, source: "Forbes Entertainers 2024", category: "people", subcategory: "entertainers" },
+  { slug: "weekend", name: "The Weeknd", color: "#ffffff", bgColor: "#8B0000", perSecond: 4, unit: "dollars earned", absurdUnit: "Blinding Lights plays happening right now", absurdDivisor: 1, source: "Forbes Entertainers 2024", category: "people", subcategory: "entertainers" },
+  { slug: "ed-sheeran", name: "Ed Sheeran", color: "#ffffff", bgColor: "#E55B13", perSecond: 3, unit: "dollars earned", absurdUnit: "Shape of You streams since you arrived", absurdDivisor: 1, source: "Forbes Entertainers 2024", category: "people", subcategory: "entertainers" },
+  { slug: "kendrick-lamar", name: "Kendrick Lamar", color: "#ffffff", bgColor: "#1a1a1a", perSecond: 5, unit: "dollars earned", absurdUnit: "Not Like Us plays since you arrived", absurdDivisor: 1, source: "Forbes Entertainers 2024", category: "people", subcategory: "entertainers" },
+  { slug: "sabrina-carpenter", name: "Sabrina Carpenter", color: "#ffffff", bgColor: "#FF6B9D", perSecond: 3, unit: "dollars earned", absurdUnit: "Espresso cups drunk since you arrived", absurdDivisor: 1, source: "Forbes Entertainers 2024", category: "people", subcategory: "entertainers" },
 ]
 
 export type Brand = typeof brands[0]
