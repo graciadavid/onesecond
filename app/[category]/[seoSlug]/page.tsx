@@ -177,7 +177,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
            className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
            style={{ border: "1px solid #25D366", color: "#25D366", background: "transparent" }}
          >
-           {copied ? "✓ Copied" : "Share on WhatsApp"}
+           {copied ? "✓ Copied" : "Share"}
          </button>
        </div>
      )}
