@@ -82,8 +82,8 @@ export default function BrandPage({ params }: { params: Promise<{ slug: string }
        {/* Absurd sentence */}
        <div className="flex flex-col gap-4">
          <p className="text-white/50 text-sm tracking-widest uppercase font-light">Since you arrived</p>
-         <p className="text-white font-light leading-snug" style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.02em" }}>
-           <span className="font-thin tabular-nums" style={{ color: "rgba(255,255,255,0.9)" }}>
+         <p className="text-white leading-snug" style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.02em", fontWeight: 300 }}>
+           <span className="tabular-nums" style={{ fontWeight: 300 }}>
              {absurdCount.toLocaleString("en-US")}
            </span>
            {" "}{brand.absurdUnit}
