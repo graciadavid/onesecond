@@ -76,8 +76,8 @@ export default function BrandPage({ params }: { params: Promise<{ slug: string }
    if (Math.abs(diff) < 50) return
    setSwiping(true)
    setTimeout(() => {
-     if (diff > 0 && nextBrand) router.push(`/brand/${nextBrand.slug}`)
-     if (diff < 0 && prevBrand) router.push(`/brand/${prevBrand.slug}`)
+     if (diff < 0 && nextBrand) router.push(`/brand/${nextBrand.slug}`)
+     if (diff > 0 && prevBrand) router.push(`/brand/${prevBrand.slug}`)
      setSwiping(false)
    }, 150)
  }
