@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import GoogleAnalytics from "../components/GoogleAnalytics"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,20 +10,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "WikiSeconds — What happens every second",
-  description: "Real-time counters showing what happens every second in the world. Brands, life, planet, money, internet, food, sports and people.",
+  description: "Real-time counters showing what happens every second in the world.",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <GoogleAnalytics />
-        {children}
-      </body>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5H1SPWP6N"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-Y5H1SPWP6N');
+        `}} />
+      </head>
+      <body className={`${inter.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }
