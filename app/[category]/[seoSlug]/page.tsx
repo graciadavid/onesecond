@@ -44,10 +44,10 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
 
  if (!brand) return <div className="min-h-screen flex items-center justify-center text-gray-400">Not found</div>
 
- const sameCat = brands.filter(b => b.category === brand.category && b.slug !== brand.slug)
- const currentIndex = sameCat.findIndex(b => b.slug === brand.slug)
- const nextBrand = sameCat[(currentIndex + 1) % sameCat.length]
- const prevBrand = sameCat[(currentIndex - 1 + sameCat.length) % sameCat.length]
+ const allInCat = brands.filter(b => b.category === brand.category)
+  const currentIndex = allInCat.findIndex(b => b.slug === brand.slug)
+  const nextBrand = allInCat[(currentIndex + 1) % allInCat.length]
+  const prevBrand = allInCat[(currentIndex - 1 + allInCat.length) % allInCat.length]
 
  const fromEntry = Math.floor(elapsed * brand.perSecond)
  const today = Math.floor((todayOffset.current() + elapsed) * brand.perSecond)
