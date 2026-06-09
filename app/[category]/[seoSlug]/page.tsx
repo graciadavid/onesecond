@@ -73,7 +73,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
 
  const handleTouchEnd = (e: React.TouchEvent) => {
    const diff = touchStartY.current - e.changedTouches[0].clientY
-   if (Math.abs(diff) < 50) return
+   if (diff < 80) return
    setSwiping(true)
    setTimeout(() => {
      if (diff > 0 && nextBrand) router.push(`/${nextBrand.category}/${nextBrand.seoSlug}`)
