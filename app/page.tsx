@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { brands } from "@/lib/brands"
 import { amazonDeals } from "@/lib/amazon"
+import Logo from "@/components/Logo"
 
 function getTextColor(bgColor: string): string {
  const hex = bgColor.replace('#', '')
@@ -64,7 +65,7 @@ export default function Home() {
 
      <header className="px-5 md:px-10 py-6 md:py-8 flex flex-col gap-4">
        <div className="flex items-center justify-between gap-4">
-         <p className="text-gray-800 text-xs md:text-sm font-light tracking-widest uppercase shrink-0">Every Second</p>
+         <p className="text-gray-800 text-xs md:text-sm font-light tracking-widest uppercase shrink-0">Wiki<b>Seconds</b></p>
          <input
            type="text"
            placeholder="Search..."
