@@ -102,7 +102,7 @@ export default function Home() {
              >
                <div
                  className="rounded-2xl p-5 md:p-8 flex flex-col justify-between cursor-pointer hover:scale-105 transition-transform"
-                 style={{ background: "#111", aspectRatio: "4/3" }}
+                 style={{ background: "#0a1628", aspectRatio: "4/3" }}
                >
                  <div className="flex items-center justify-between">
                    <p className="text-white/40 text-xs tracking-widest uppercase font-medium">Amazon</p>
