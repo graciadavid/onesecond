@@ -99,7 +99,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
        <Link href="/" className="text-xs md:text-sm font-light tracking-widest uppercase hover:opacity-70 transition-opacity" style={{ color: tc }}>
          Wiki<span className="font-bold">Seconds</span>
        </Link>
-       <button onClick={handleShare} className="md:hidden text-xs tracking-widest uppercase font-light hover:opacity-70 transition-opacity" style={{ color: tc, border: `1px solid ${tc}`, borderRadius: "9999px", padding: "6px 16px" }}>
+       <button onClick={handleShare} className="text-xs tracking-widest uppercase font-light hover:opacity-70 transition-opacity" style={{ color: "#ffffff", border: "1px solid #ffffff", borderRadius: "9999px", padding: "6px 16px" }}>
          {copied ? "✓ Copied" : "Share"}
        </button>
      </header>
