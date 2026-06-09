@@ -152,7 +152,7 @@ export default function BrandPage({ params }: { params: Promise<{ slug: string }
         <p className="text-white/20 text-xs tracking-widest font-light">Every Second</p>
         <button onClick={handleShare}
           className="px-5 py-2.5 rounded-full text-xs tracking-widest uppercase font-medium transition-all"
-          style={{ background: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)" }}>
+          style={{ background: "transparent", color: "rgba(255,255,255,0.3)" }}>
           {copied ? "✓ Copied" : "Share"}
         </button>
       </footer>
