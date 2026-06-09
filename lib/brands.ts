@@ -68,6 +68,8 @@ export const brands = [
   { slug: "google-ads", name: "Google Ads", color: "#ffffff", bgColor: "#FBBC05", perSecond: 9600, unit: "dollars on Google Ads", absurdUnit: "small business daily ad budgets spent", absurdDivisor: 50, source: "Google Annual Report 2023", category: "internet", subcategory: "" },
   { slug: "netflix-streams", name: "Netflix Streams", color: "#ffffff", bgColor: "#E50914", perSecond: 29000, unit: "Netflix streams active", absurdUnit: "movie theaters worth of viewers", absurdDivisor: 300, source: "Netflix Stats 2023", category: "internet", subcategory: "" },
   { slug: "amazon-visits", name: "Amazon Visits", color: "#ffffff", bgColor: "#FF9900", perSecond: 75000, unit: "Amazon page visits", absurdUnit: "people browsing Amazon right now", absurdDivisor: 100, source: "SimilarWeb 2023", category: "internet", subcategory: "" },
+  { slug: "chatgpt", name: "ChatGPT", color: "#ffffff", bgColor: "#10a37f", perSecond: 28935, unit: "prompts sent", absurdUnit: "novels worth of text sent to ChatGPT", absurdDivisor: 500, source: "OpenAI via Axios 2025", category: "internet", subcategory: "" },
+  { slug: "claude", name: "Claude", color: "#ffffff", bgColor: "#cc785c", perSecond: 3000, unit: "messages sent", absurdUnit: "books worth of conversations happening", absurdDivisor: 300, source: "Anthropic 2025", category: "internet", subcategory: "" },
 
   // FOOD
   { slug: "pizzas", name: "Pizzas", color: "#ffffff", bgColor: "#C62828", perSecond: 350, unit: "pizzas eaten", absurdUnit: "pizzerias serving at full capacity", absurdDivisor: 50, source: "PMQ Pizza Magazine 2023", category: "food", subcategory: "" },
