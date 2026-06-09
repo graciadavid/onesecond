@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { brands } from "@/lib/brands"
-import { useRouter } from "next/navigation"
 
 function AnimatedNumber({ perSecond }: { perSecond: number }) {
   const [count, setCount] = useState(0)
@@ -33,34 +32,39 @@ const categories = [
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("all")
-  const router = useRouter()
+  const [search, setSearch] = useState("")
 
-  const handleCategory = (id: string) => {
-    if (id === "people") {
-      router.push("/category/people")
-      return
-    }
-    setActiveCategory(id)
-  }
-
-  const filtered = activeCategory === "all"
-    ? brands.filter(b => b.category !== "people")
-    : brands.filter(b => b.category === activeCategory)
+  const filtered = brands.filter(b => {
+    const matchesCategory = activeCategory === "all" || b.category === activeCategory
+    const matchesSearch = search === "" || b.name.toLowerCase().includes(search.toLowerCase())
+    return matchesCategory && matchesSearch
+  })
 
   return (
     <main className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #ffffff 0%, #fafafa 60%, #f5f0f0 100%)" }}>
 
-      <header className="px-5 md:px-10 py-6 md:py-8">
-        <p className="text-gray-800 text-xs md:text-sm font-light tracking-widest uppercase mb-4">Every Second</p>
+      <header className="px-5 md:px-10 py-6 md:py-8 flex flex-col gap-4">
+        <p className="text-gray-800 text-xs md:text-sm font-light tracking-widest uppercase">Every Second</p>
+
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={e => { setSearch(e.target.value); setActiveCategory("all") }}
+          className="w-full max-w-xs rounded-full px-4 py-2 text-xs tracking-widest outline-none border border-black/10 bg-white/80 text-gray-600 placeholder-gray-300"
+        />
+
+        {/* Categories */}
         <div className="flex gap-1 flex-wrap">
           {categories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => handleCategory(cat.id)}
+              onClick={() => { setActiveCategory(cat.id); setSearch("") }}
               className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs tracking-widest uppercase font-medium transition-all"
               style={{
-                background: activeCategory === cat.id ? "#000" : "transparent",
-                color: activeCategory === cat.id ? "#fff" : "#aaa",
+                background: activeCategory === cat.id && search === "" ? "#000" : "transparent",
+                color: activeCategory === cat.id && search === "" ? "#fff" : "#aaa",
               }}
             >
               {cat.label}
