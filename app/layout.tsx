@@ -1,16 +1,17 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import GoogleAnalytics from "@/components/GoogleAnalytics"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400"],
   variable: "--font-inter"
 })
 
 export const metadata: Metadata = {
-  title: "OneSecond",
-  description: "Lo que pasa cada segundo",
+  title: "WikiSeconds — What happens every second",
+  description: "Real-time counters showing what happens every second in the world. Brands, life, planet, money, internet, food, sports and people.",
 }
 
 export default function RootLayout({
@@ -19,8 +20,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={`${inter.variable} font-sans antialiased`}>{children}</body>
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
   )
 }
