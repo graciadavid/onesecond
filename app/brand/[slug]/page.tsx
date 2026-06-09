@@ -96,7 +96,7 @@ export default function BrandPage({ params }: { params: Promise<{ slug: string }
    >
      {/* Header */}
      <header className="flex items-center justify-between px-6 pt-12 pb-2 md:px-10 md:pt-8">
-       <Link href="/" style={{ color: tc, opacity: 0.3 }} className="text-xs tracking-widest uppercase font-light hover:opacity-60 transition-opacity">← Back</Link>
+       <Link href="/" style={{ color: tc, opacity: 0.6 }} className="text-xs md:text-sm font-light tracking-widest uppercase hover:opacity-100 transition-opacity">Wiki<span style={{ fontWeight: 700 }}>Seconds</span></Link>
        <button onClick={handleShare} style={{ color: tc, opacity: 0.2 }} className="text-xs tracking-widest uppercase font-light hover:opacity-50 transition-opacity">
          {copied ? "✓" : "Share"}
        </button>
