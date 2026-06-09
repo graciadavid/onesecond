@@ -111,8 +111,8 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
            {part}
          </p>
        ))}
+       <div className="mt-4 h-px w-24 mx-auto" style={{ background: tc, opacity: 0.4 }} />
      </section>
-       <hr className="mt-4 border-0 h-px w-24 md:w-48" style={{ background: tc, opacity: 0.4 }} />
 
      <section className="flex flex-col items-center justify-center px-8 py-6 text-center gap-2">
        <p className="text-xs tracking-[0.4em] uppercase" style={{ color: tc }}>Since you arrived</p>
