@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { brands } from "@/lib/brands"
 import { amazonDeals } from "@/lib/amazon"
-import Logo from "@/components/Logo"
+
 
 function getTextColor(bgColor: string): string {
  const hex = bgColor.replace('#', '')
