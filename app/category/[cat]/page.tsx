@@ -62,7 +62,7 @@ export default function CategoryPage({ params }: { params: Promise<{ cat: string
 
       <section className="flex-1 px-5 md:px-10 py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
         {filtered.map((brand) => (
-          <Link key={brand.slug} href={`/brand/${brand.slug}`}>
+          <Link key={brand.slug} href={`/${brand.category}/${brand.seoSlug}`}>
             <div
               className="rounded-2xl p-5 md:p-8 flex flex-col justify-between cursor-pointer hover:scale-105 transition-transform"
               style={{ background: brand.bgColor, aspectRatio: "4/3" }}
