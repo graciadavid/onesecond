@@ -183,7 +183,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
      )}
 
      <footer className="px-8 pb-4 text-center">
-       <p className="text-xs tracking-widest font-light" style={{ color: tc }}>{brand.source}</p>
+       <p className="text-xs tracking-widest font-light" style={{ color: tc }}>Data source: {brand.source}</p>
      </footer>
 
    </main>
