@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "WikiSeconds — What happens every second",
   description: "Real-time counters showing what happens every second in the world.",
+  icons: {
+    icon: "/favicon.svg",
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
