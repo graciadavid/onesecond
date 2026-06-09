@@ -15,26 +15,30 @@ function AnimatedNumber({ perSecond }: { perSecond: number }) {
     return () => clearInterval(interval)
   }, [perSecond])
 
-  return <>{count.toLocaleString("es-ES")}</>
+  return <>{count.toLocaleString("en-US")}</>
 }
 
 const categories = [
-  { id: "all", label: "Todo" },
-  { id: "brands", label: "Marcas" },
-  { id: "life", label: "Vida" },
+  { id: "all", label: "All" },
+  { id: "brands", label: "Brands" },
+  { id: "life", label: "Life" },
+  { id: "planet", label: "Planet" },
+  { id: "money", label: "Money" },
+  { id: "internet", label: "Internet" },
+  { id: "food", label: "Food" },
+  { id: "sports", label: "Sports" },
 ]
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("all")
-
   const filtered = activeCategory === "all" ? brands : brands.filter(b => b.category === activeCategory)
 
   return (
     <main className="min-h-screen flex flex-col" style={{ background: "linear-gradient(160deg, #ffffff 0%, #fafafa 60%, #f5f0f0 100%)" }}>
 
       <header className="px-10 py-8 flex items-center justify-between">
-        <p className="text-gray-300 text-xs tracking-widest uppercase font-light">Lo que pasa cada segundo</p>
-        <div className="flex gap-2">
+        <p className="text-gray-800 text-sm font-light tracking-widest uppercase">Every Second</p>
+        <div className="flex gap-1 flex-wrap justify-end">
           {categories.map(cat => (
             <button
               key={cat.id}
@@ -62,14 +66,7 @@ export default function Home() {
                 {brand.name}
               </p>
               <div className="flex flex-col gap-2">
-                <p
-                  className="tabular-nums font-thin leading-none text-white"
-                  style={{
-                    fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-                    letterSpacing: "-0.03em",
-                    fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif",
-                  }}
-                >
+                <p className="tabular-nums font-thin leading-none text-white" style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.03em", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif" }}>
                   <AnimatedNumber perSecond={brand.perSecond} />
                 </p>
                 <p className="text-white text-xs font-medium tracking-widest uppercase">
@@ -82,7 +79,7 @@ export default function Home() {
       </section>
 
       <footer className="px-10 py-8">
-        <p className="text-gray-300 text-xs tracking-widest font-light">Datos en tiempo real</p>
+        <p className="text-gray-300 text-xs tracking-widest font-light">Real-time data</p>
       </footer>
 
     </main>
