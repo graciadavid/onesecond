@@ -101,7 +101,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
             {part}
           </p>
         ))}
-        <div className="h-px w-24 mx-auto mt-2" style={{ background: tc, opacity: 0.4 }} />
+
       </section>
 
       {/* BLOQUE 2 — Since you arrived — invertido */}
