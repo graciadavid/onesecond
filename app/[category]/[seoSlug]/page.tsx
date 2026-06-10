@@ -20,6 +20,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
  const brand = brands.find(b => b.seoSlug === seoSlug && b.category === category)
  const [copied, setCopied] = useState(false)
  const [elapsed, setElapsed] = useState(0)
+  const [visible, setVisible] = useState(true)
  const [swiping, setSwiping] = useState(false)
  const startRef = useRef(Date.now())
  const touchStartY = useRef(0)
@@ -27,7 +28,11 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
 
  useEffect(() => {
    const interval = setInterval(() => {
-     setElapsed((Date.now() - startRef.current) / 1000)
+     setVisible(false)
+      setTimeout(() => {
+        setElapsed((Date.now() - startRef.current) / 1000)
+        setVisible(true)
+      }, 200)
    }, 500)
    return () => clearInterval(interval)
  }, [])
@@ -108,8 +113,8 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
      {/* Since you arrived */}
      <section className="flex-1 flex flex-col items-center justify-center px-8 text-center gap-6">
        <p className="text-xs tracking-[0.4em] uppercase" style={{ color: tc, opacity: 0.6 }}>Since you arrived</p>
-       <p className="tabular-nums font-thin leading-none transition-all duration-500"
-         style={{ fontSize: "clamp(4rem, 18vw, 10rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
+       <p className="tabular-nums font-thin leading-none"
+         style={{ fontSize: "clamp(4rem, 18vw, 10rem)", opacity: visible ? 1 : 0, transition: "opacity 0.3s ease", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
          {fromEntry.toLocaleString("en-US")}
        </p>
        <p className="text-sm font-light tracking-widest uppercase" style={{ color: tc }}>{brand.unit}</p>
