@@ -25,16 +25,6 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
  const touchStartY = useRef(0)
  const router = useRouter()
 
- const todayOffset = useRef(() => {
-   const now = new Date()
-   return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
- })
-
- const yearOffset = useRef(() => {
-   const now = new Date()
-   return (Date.now() - new Date(now.getFullYear(), 0, 1).getTime()) / 1000
- })
-
  useEffect(() => {
    const interval = setInterval(() => {
      setElapsed((Date.now() - startRef.current) / 1000)
@@ -45,19 +35,18 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
  if (!brand) return <div className="min-h-screen flex items-center justify-center text-gray-400">Not found</div>
 
  const allInCat = brands.filter(b => b.category === brand.category)
-  const currentIndex = allInCat.findIndex(b => b.slug === brand.slug)
-  const nextBrand = allInCat[(currentIndex + 1) % allInCat.length]
-  const prevBrand = allInCat[(currentIndex - 1 + allInCat.length) % allInCat.length]
+ const currentIndex = allInCat.findIndex(b => b.slug === brand.slug)
+ const nextBrand = allInCat[(currentIndex + 1) % allInCat.length]
 
  const fromEntry = Math.floor(elapsed * brand.perSecond)
- const today = Math.floor((todayOffset.current() + elapsed) * brand.perSecond)
- const thisYear = Math.floor((yearOffset.current() + elapsed) * brand.perSecond)
- const absurdCount = Math.max(1, Math.floor(fromEntry / brand.absurdDivisor))
+ const perSecondDisplay = brand.perSecond >= 1000
+   ? `${(brand.perSecond / 1000).toFixed(0)}K`
+   : brand.perSecond.toLocaleString("en-US")
  const tc = getTextColor(brand.bgColor)
 
  const handleShare = () => {
    const url = typeof window !== "undefined" ? window.location.href : ""
-   const text = `${absurdCount} ${brand.absurdUnit} since I opened this page 🤯`
+   const text = `${fromEntry.toLocaleString("en-US")} ${brand.unit} since I opened this page 🤯 wikiseconds.com`
    if (navigator.share) {
      navigator.share({ title: brand.name, text, url })
    } else {
@@ -76,8 +65,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
    if (diff < 80) return
    setSwiping(true)
    setTimeout(() => {
-     if (diff > 0 && nextBrand) router.push(`/${nextBrand.category}/${nextBrand.seoSlug}`)
-     
+     router.push(`/${nextBrand.category}/${nextBrand.seoSlug}`)
      setSwiping(false)
    }, 300)
  }
@@ -90,100 +78,82 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
      style={{
        background: `linear-gradient(160deg, ${brand.bgColor}dd 0%, ${brand.bgColor} 100%)`,
        opacity: swiping ? 0.3 : 1,
-       color: tc
      }}
      onTouchStart={handleTouchStart}
      onTouchEnd={handleTouchEnd}
    >
+     {/* Header */}
      <header className="flex items-center justify-between px-6 pt-12 pb-2 md:px-10 md:pt-8">
        <Link href="/" className="text-xs md:text-sm font-light tracking-widest uppercase hover:opacity-70 transition-opacity" style={{ color: tc }}>
          Wiki<span className="font-bold">Seconds</span>
        </Link>
-       <button onClick={handleShare} className="text-xs tracking-widest uppercase font-light hover:opacity-70 transition-opacity" style={{ color: "#ffffff", border: "1px solid #ffffff", borderRadius: "9999px", padding: "6px 16px" }}>
+       <button
+         onClick={handleShare}
+         className="text-xs tracking-widest uppercase font-light hover:opacity-70 transition-opacity"
+         style={{ color: "#ffffff", border: "1px solid #ffffff", borderRadius: "9999px", padding: "6px 16px" }}
+       >
          {copied ? "✓ Copied" : "Share"}
        </button>
      </header>
 
-     <section className="flex flex-col items-center justify-center px-8 pt-6 pb-4">
+     {/* Nombre */}
+     <section className="flex flex-col items-center px-8 pt-8 pb-2">
        {nameParts.map((part, i) => (
          <p key={i} className="text-center leading-none font-thin"
-           style={{ fontSize: "clamp(2rem, 10vw, 5rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.03em", color: tc }}>
+           style={{ fontSize: "clamp(2.5rem, 12vw, 6rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.03em", color: tc }}>
            {part}
          </p>
        ))}
        <div className="mt-4 h-px w-24 mx-auto" style={{ background: tc, opacity: 0.4 }} />
      </section>
 
-     <section className="flex flex-col items-center justify-center px-8 py-6 text-center gap-2">
-       <p className="text-xs tracking-[0.4em] uppercase" style={{ color: tc }}>Since you arrived</p>
-       <p className="leading-tight font-light text-center"
-         style={{ fontSize: "clamp(2rem, 8vw, 4.5rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.03em", color: tc }}>
-         <span className="tabular-nums font-thin">{absurdCount.toLocaleString("en-US")}</span>
-         <br />
-         {brand.absurdUnit}
+     {/* Dato principal — per second */}
+     <section className="flex flex-col items-center px-8 pt-8 pb-2 text-center">
+       <p className="text-xs tracking-[0.4em] uppercase mb-2" style={{ color: tc, opacity: 0.6 }}>Every second</p>
+       <p className="tabular-nums font-thin leading-none"
+         style={{ fontSize: "clamp(4rem, 18vw, 10rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
+         {brand.perSecond.toLocaleString("en-US")}
        </p>
+       <p className="text-sm font-light tracking-widest uppercase mt-2" style={{ color: tc }}>{brand.unit}</p>
      </section>
 
-     <section className="flex flex-col items-center px-8 py-8 gap-5">
-       <div className="flex flex-col items-center gap-1">
-         <p className="tabular-nums font-thin text-center"
-           style={{ fontSize: "clamp(1.6rem, 6vw, 3rem)", letterSpacing: "-0.04em", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", color: tc }}>
-           {fromEntry.toLocaleString("en-US")}
-         </p>
-         <p className="text-xs tracking-[0.3em] uppercase" style={{ color: tc }}>{brand.unit} since you arrived</p>
-       </div>
-
-       <div className="flex gap-12">
-         <div className="flex flex-col items-center gap-1">
-           <p className="tabular-nums font-thin text-center"
-             style={{ fontSize: "clamp(1.2rem, 4vw, 2rem)", letterSpacing: "-0.03em", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", color: tc }}>
-             {today.toLocaleString("en-US")}
-           </p>
-           <p className="text-xs tracking-[0.3em] uppercase" style={{ color: tc }}>today</p>
-         </div>
-         <div className="flex flex-col items-center gap-1">
-           <p className="tabular-nums font-thin text-center"
-             style={{ fontSize: "clamp(1.2rem, 4vw, 2rem)", letterSpacing: "-0.03em", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", color: tc }}>
-             {thisYear.toLocaleString("en-US")}
-           </p>
-           <p className="text-xs tracking-[0.3em] uppercase" style={{ color: tc }}>this year</p>
-         </div>
-       </div>
+     {/* Desde que entraste */}
+     <section className="flex flex-col items-center px-8 pt-8 pb-4 text-center">
+       <p className="text-xs tracking-[0.4em] uppercase mb-2" style={{ color: tc, opacity: 0.6 }}>Since you arrived</p>
+       <p className="tabular-nums font-thin leading-none"
+         style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
+         {fromEntry.toLocaleString("en-US")}
+       </p>
+       <p className="text-sm font-light tracking-widest uppercase mt-2" style={{ color: tc, opacity: 0.7 }}>{brand.unit}</p>
      </section>
 
-     {/* Mobile swipe hint */}
-     {nextBrand && (
-       <div className="flex md:hidden flex-col items-center pb-16 pt-4 gap-1">
-         <p className="text-xs tracking-widest uppercase" style={{ color: tc }}>swipe up</p>
-         <p className="text-xs" style={{ color: tc }}>↑</p>
-         <p className="text-xs tracking-widest uppercase font-medium" style={{ color: tc }}>{nextBrand.name}</p>
-       </div>
-     )}
+     {/* Mobile swipe */}
+     <div className="flex md:hidden flex-col items-center pb-16 pt-8 gap-1">
+       <p className="text-xs tracking-widest uppercase" style={{ color: tc, opacity: 0.4 }}>swipe up</p>
+       <p className="text-xs" style={{ color: tc, opacity: 0.4 }}>↑</p>
+       <p className="text-xs tracking-widest uppercase font-medium" style={{ color: tc, opacity: 0.6 }}>{nextBrand.name}</p>
+     </div>
 
      {/* Desktop buttons */}
-     {nextBrand && (
-       <div className="hidden md:flex items-center justify-center gap-4 pb-12 pt-4">
-         {nextBrand && (
-           <Link
-             href={`/${nextBrand.category}/${nextBrand.seoSlug}`}
-             className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
-             style={{ border: `1px solid ${tc}`, color: tc, background: "transparent" }}
-           >
-             Next: {nextBrand.name} →
-           </Link>
-         )}
-         <button
-           onClick={handleShare}
-           className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
-           style={{ border: "1px solid #25D366", color: "#25D366", background: "transparent" }}
-         >
-           {copied ? "✓ Copied" : "Share"}
-         </button>
-       </div>
-     )}
+     <div className="hidden md:flex items-center justify-center gap-4 pb-12 pt-8">
+       <Link
+         href={`/${nextBrand.category}/${nextBrand.seoSlug}`}
+         className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
+         style={{ border: `1px solid ${tc}`, color: tc, background: "transparent" }}
+       >
+         Next: {nextBrand.name} →
+       </Link>
+       <button
+         onClick={handleShare}
+         className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
+         style={{ border: "1px solid #ffffff", color: "#ffffff", background: "transparent" }}
+       >
+         {copied ? "✓ Copied" : "Share"}
+       </button>
+     </div>
 
-     <footer className="px-8 pb-4 text-center">
-       <p className="text-xs tracking-widest font-light" style={{ color: tc }}>Data source: {brand.source}</p>
+     <footer className="px-8 pb-6 text-center">
+       <p className="text-xs tracking-widest font-light" style={{ color: tc, opacity: 0.3 }}>Data source: {brand.source}</p>
      </footer>
 
    </main>
