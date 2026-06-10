@@ -108,7 +108,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
      {/* Since you arrived */}
      <section className="flex-1 flex flex-col items-center justify-center px-8 text-center gap-6">
        <p className="text-xs tracking-[0.4em] uppercase" style={{ color: tc, opacity: 0.6 }}>Since you arrived</p>
-       <p className="tabular-nums font-thin leading-none"
+       <p className="tabular-nums font-thin leading-none transition-all duration-500"
          style={{ fontSize: "clamp(4rem, 18vw, 10rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
          {fromEntry.toLocaleString("en-US")}
        </p>
