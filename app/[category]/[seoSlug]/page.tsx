@@ -23,7 +23,8 @@ function useSmooth(perSecond: number) {
   useEffect(() => {
     const animate = () => {
       const elapsed = (Date.now() - startRef.current) / 1000
-      setValue(Math.floor(elapsed * perSecond))
+      const target = Math.floor(elapsed * perSecond)
+      setValue(prev => prev + Math.ceil((target - prev) * 0.05))
       frameRef.current = requestAnimationFrame(animate)
     }
     frameRef.current = requestAnimationFrame(animate)
