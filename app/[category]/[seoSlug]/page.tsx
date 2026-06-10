@@ -18,7 +18,7 @@ function getTextColor(bgColor: string): string {
 function useSmooth(perSecond: number) {
   const [value, setValue] = useState(0)
   const startRef = useRef(Date.now())
-  const frameRef = useRef<number>()
+  const frameRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const animate = () => {
