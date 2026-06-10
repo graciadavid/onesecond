@@ -89,16 +89,11 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
         style={{ background: `linear-gradient(160deg, ${brand.bgColor}dd 0%, ${brand.bgColor} 100%)` }}
       >
         <div className="flex items-center justify-between w-full px-0 mb-4">
+
           <Link href="/" className="text-xs font-light tracking-widest uppercase hover:opacity-70" style={{ color: tc }}>
             Wiki<span className="font-bold">Seconds</span>
           </Link>
-          <button
-            onClick={handleShare}
-            className="text-xs tracking-widest uppercase font-light hover:opacity-70"
-            style={{ color: "#ffffff", border: "1px solid #ffffff", borderRadius: "9999px", padding: "6px 16px" }}
-          >
-            {copied ? "✓ Copied" : "Share"}
-          </button>
+  
         </div>
         {nameParts.map((part, i) => (
           <p key={i} className="text-center leading-none font-thin"
@@ -127,6 +122,13 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
           {fromEntry.toLocaleString("en-US")}
         </p>
         <p className="text-sm font-light tracking-widest uppercase" style={{ color: brand.bgColor, opacity: 0.7 }}>{brand.unit}</p>
+        <button
+          onClick={handleShare}
+          className="mt-2 text-xs tracking-widest uppercase font-light hover:opacity-70 transition-opacity"
+          style={{ color: brand.bgColor, border: `1px solid ${brand.bgColor}`, borderRadius: "9999px", padding: "8px 20px" }}
+        >
+          {copied ? "✓ Copied" : "Share"}
+        </button>
       </section>
 
       {/* BLOQUE 3 — Dato absurdo + swipe — vuelve al color marca */}
