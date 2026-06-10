@@ -28,7 +28,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
  useEffect(() => {
    const interval = setInterval(() => {
      setElapsed((Date.now() - startRef.current) / 1000)
-   }, 50)
+   }, 500)
    return () => clearInterval(interval)
  }, [])
 
