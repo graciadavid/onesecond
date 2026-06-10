@@ -39,9 +39,7 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
  const nextBrand = allInCat[(currentIndex + 1) % allInCat.length]
 
  const fromEntry = Math.floor(elapsed * brand.perSecond)
- const perSecondDisplay = brand.perSecond >= 1000
-   ? `${(brand.perSecond / 1000).toFixed(0)}K`
-   : brand.perSecond.toLocaleString("en-US")
+ const absurdCount = Math.max(1, Math.floor(fromEntry / brand.absurdDivisor))
  const tc = getTextColor(brand.bgColor)
 
  const handleShare = () => {
@@ -107,35 +105,34 @@ export default function BrandPage({ params }: { params: Promise<{ category: stri
        <div className="mt-4 h-px w-24 mx-auto" style={{ background: tc, opacity: 0.4 }} />
      </section>
 
-     {/* Dato principal — per second */}
-     <section className="flex flex-col items-center px-8 pt-8 pb-2 text-center">
-       <p className="text-xs tracking-[0.4em] uppercase mb-2" style={{ color: tc, opacity: 0.6 }}>Every second</p>
+     {/* Since you arrived */}
+     <section className="flex-1 flex flex-col items-center justify-center px-8 text-center gap-6">
+       <p className="text-xs tracking-[0.4em] uppercase" style={{ color: tc, opacity: 0.6 }}>Since you arrived</p>
        <p className="tabular-nums font-thin leading-none"
          style={{ fontSize: "clamp(4rem, 18vw, 10rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
-         {brand.perSecond.toLocaleString("en-US")}
-       </p>
-       <p className="text-sm font-light tracking-widest uppercase mt-2" style={{ color: tc }}>{brand.unit}</p>
-     </section>
-
-     {/* Desde que entraste */}
-     <section className="flex flex-col items-center px-8 pt-8 pb-4 text-center">
-       <p className="text-xs tracking-[0.4em] uppercase mb-2" style={{ color: tc, opacity: 0.6 }}>Since you arrived</p>
-       <p className="tabular-nums font-thin leading-none"
-         style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.04em", color: tc }}>
          {fromEntry.toLocaleString("en-US")}
        </p>
-       <p className="text-sm font-light tracking-widest uppercase mt-2" style={{ color: tc, opacity: 0.7 }}>{brand.unit}</p>
+       <p className="text-sm font-light tracking-widest uppercase" style={{ color: tc }}>{brand.unit}</p>
+
+       <div className="h-px w-16 mx-auto" style={{ background: tc, opacity: 0.2 }} />
+
+       {/* Dato absurdo */}
+       <p className="font-light leading-snug text-center max-w-xs"
+         style={{ fontSize: "clamp(1.2rem, 4vw, 1.8rem)", fontFamily: "-apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif", letterSpacing: "-0.02em", color: tc }}>
+         <span className="tabular-nums font-thin">{absurdCount.toLocaleString("en-US")}</span>
+         {" "}{brand.absurdUnit}
+       </p>
      </section>
 
      {/* Mobile swipe */}
-     <div className="flex md:hidden flex-col items-center pb-16 pt-8 gap-1">
+     <div className="flex md:hidden flex-col items-center pb-16 pt-4 gap-1">
        <p className="text-xs tracking-widest uppercase" style={{ color: tc, opacity: 0.4 }}>swipe up</p>
        <p className="text-xs" style={{ color: tc, opacity: 0.4 }}>↑</p>
        <p className="text-xs tracking-widest uppercase font-medium" style={{ color: tc, opacity: 0.6 }}>{nextBrand.name}</p>
      </div>
 
      {/* Desktop buttons */}
-     <div className="hidden md:flex items-center justify-center gap-4 pb-12 pt-8">
+     <div className="hidden md:flex items-center justify-center gap-4 pb-12 pt-4">
        <Link
          href={`/${nextBrand.category}/${nextBrand.seoSlug}`}
          className="px-8 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all hover:opacity-80"
